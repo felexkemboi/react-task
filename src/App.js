@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import Table from './components/Table.js';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './assets/banana.png';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import All from './components/All';
+import Details from './components/Details';
+import Categories from './components/Categories';
 
 
 
@@ -14,8 +16,6 @@ class App extends Component {
       cocktails: []
     }
   }
-
-  
   componentDidMount() {
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
     .then((response) => {
@@ -23,16 +23,27 @@ class App extends Component {
     });
   }
 
-
   render() {
     return (
       <div className="App">
-        <nav className="navbar navbar-light bg-light">
-          <a className="navbar-brand" href="./">
-            <img src={logo} alt="logo" width="40" /> Top 5 drinks
-          </a>
-        </nav>
-        <Table droplets={ this.state.cocktails }/>
+        <Router>
+          <div>
+            <h2>Welcome Drinks Restaurant</h2>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+              <ul className="navbar-nav mr-auto">
+                <li><Link to={'/'} className="nav-link"> All </Link></li>
+                <li><Link to={'/details'} className="nav-link">Details</Link></li>
+                <li><Link to={'/categories'} className="nav-link">Categories</Link></li>
+              </ul>
+            </nav>
+            <hr />
+            <Switch>
+              <Route exact path='/'  component={All} />
+              <Route path='/categories' component={Categories} />
+              <Route path='/details' component={Details} />
+            </Switch>
+          </div>
+        </Router>
       </div>
     );
   }
