@@ -3,6 +3,7 @@ import Table from './components/Table.js';
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class App extends Component {
 
   constructor(props) {
@@ -14,14 +15,8 @@ class App extends Component {
 
   componentDidMount() {
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
-    //.then(res => res.json())
-    //.then(json => json.cocktails)
-    //.then(response => this.setState({ 'cocktails': response.data }))
     .then((response) => {
-      //console.log(response.data);
       this.setState({ 'cocktails': response.data.drinks })
-      //this.setState({ 'droplets': droplets })
-      //console.log(this.state.cocktails)
     });
   }
 

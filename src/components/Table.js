@@ -5,7 +5,7 @@ const Table = ({ droplets }) => {
   console.log("testing it working...")
   console.log(droplets.length)
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
           <th>Name</th>
