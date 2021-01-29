@@ -11,15 +11,14 @@ const Table = ({ droplets }) => {
           <th>Name</th>
           <th>Category</th>
           <th>Glass</th>
-          <th>dateModified</th>
-          <th>strCreativeCommonsConfirmed</th>
+          <th>Date Modified</th>
+          <th>Creative Commons Confirmed</th>
         </tr>
       </thead>
       <tbody>
       { (droplets.length > 0) ? droplets.map( (droplet, index) => {
           return (
             <tr key={ index }>
-              <td>{ droplet.idDrink }</td>
               <td>{ droplet.strCategory }</td>
               <td>{ droplet.strCategory}</td>
               <td>{ droplet.strGlass }</td>
