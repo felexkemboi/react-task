@@ -1,11 +1,13 @@
 //import React from 'react';
 
-const Table = ({ items }) => {
+const Table = ({ droplets }) => {
+  console.log(droplets)
+  console.log("testing it working...")
+  console.log(droplets.length)
   return (
     <table>
       <thead>
         <tr>
-          <th>Id</th>
           <th>Name</th>
           <th>Category</th>
           <th>Glass</th>
@@ -14,22 +16,42 @@ const Table = ({ items }) => {
         </tr>
       </thead>
       <tbody>
-
-      { (items.length > 0) ? items.map( (items, index) => {
-           return (
+      { (droplets.length > 0) ? droplets.map( (droplet, index) => {
+          return (
             <tr key={ index }>
-              <td>{ items.idDrink }</td>
-              <td>{ items.strCategory }</td>
-              <td>{ items.strCategory}</td>
-              <td>{ items.strGlass }</td>
-              <td>{ items.dateModified }</td>
-              <td>{ items.strCreativeCommonsConfirmed }</td>
+              <td>{ droplet.idDrink }</td>
+              <td>{ droplet.strCategory }</td>
+              <td>{ droplet.strCategory}</td>
+              <td>{ droplet.strGlass }</td>
+              <td>{ droplet.dateModified }</td>
+              <td>{ droplet.strCreativeCommonsConfirmed }</td>
             </tr>
           )}) : <tr><td colSpan="5">Loading...</td></tr>
       }
       </tbody>
     </table>
+
   );
 }
 
 export default Table
+
+/*
+
+
+
+
+            {droplets.map(( droplet, index ) => {
+          return (
+            <tr key={index}>
+              <td>{ droplet.idDrink }</td>
+              <td>{ droplet.strCategory }</td>
+              <td>{ droplet.strCategory}</td>
+              <td>{ droplet.strGlass }</td>
+              <td>{ droplet.dateModified }</td>
+              <td>{ droplet.strCreativeCommonsConfirmed }</td>
+            </tr>
+          );
+        })}
+
+*/
