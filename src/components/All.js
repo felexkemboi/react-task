@@ -2,8 +2,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Button } from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 
 class All extends Component {
 
@@ -17,14 +16,14 @@ class All extends Component {
     componentDidMount() {
         axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
         .then((response) => {
-          console.log(response.data.drinks)
           this.setState({ 'cocktails': response.data.drinks })
         });
     }
     render() {
         return (
             <div>
-                <table className="table">
+                <p className="centre"><h2>All the Cocktails available</h2></p>
+                { <table className="table">
                     <thead>
                         <tr>
                         <th>Name</th>
@@ -39,17 +38,19 @@ class All extends Component {
                     { (this.state.cocktails.length > 0) ? this.state.cocktails.map( (droplet, index) => {
                         return (
                             <tr key={ index }>
-                            <td>{ droplet.strCategory }</td>
-                            <td>{ droplet.strCategory}</td>
-                            <td>{ droplet.strGlass }</td>
-                            <td>{ droplet.dateModified }</td>
-                            <td>{ droplet.strCreativeCommonsConfirmed }</td>
-                            <td><Button color="info" className="px-4">More</Button></td>
+                                <td>{ droplet.strCategory }</td>
+                                <td>{ droplet.strCategory}</td>
+                                <td>{ droplet.strGlass }</td>
+                                <td>{ droplet.dateModified }</td>
+                                <td>{ droplet.strCreativeCommonsConfirmed }</td>
+                                <td><span className="input-group-btn"><Link to={{ pathname:`/details/${droplet.idDrink}` }}>More</Link></span></td>
                             </tr>
                         )}) : <tr><td colSpan="5">Loading...</td></tr>
                     }
                     </tbody>
-                </table>
+                 </table>
+                }
+
             </div>
         );
     }

@@ -32,7 +32,6 @@ class App extends Component {
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <ul className="navbar-nav mr-auto">
                 <li><Link to={'/'} className="nav-link"> All </Link></li>
-                <li><Link to={'/details'} className="nav-link">Details</Link></li>
                 <li><Link to={'/categories'} className="nav-link">Categories</Link></li>
               </ul>
             </nav>
@@ -40,7 +39,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/'  component={All} />
               <Route path='/categories' component={Categories} />
-              <Route path='/details' component={Details} />
+              <Route path='/details/:id' component={Details} />
             </Switch>
           </div>
         </Router>
