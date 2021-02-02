@@ -13,11 +13,20 @@ class All extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+    async componentDidMount() {
+         await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
         .then((response) => {
           this.setState({ 'cocktails': response.data.drinks })
         });
+        const categories = []
+
+       for (const drink in this.state.cocktails){
+           let category = drink.strCategory
+           console.log(category)
+           categories.push(category)
+       }
+
+       console.log(categories)
     }
     render() {
         return (

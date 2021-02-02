@@ -7,6 +7,7 @@ class Categories extends Component {
     return (
         <div>
           <h2>Drinks Per Categories</h2>
+          <input type="text" placeholder="type the category you want"></input>
         </div>
     );
   }
